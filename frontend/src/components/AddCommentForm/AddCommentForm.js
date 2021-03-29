@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './AddCommentForm.scss';
 
 const AddCommentForm = ({ articleName, setArticleInfo }) => {
@@ -6,14 +7,11 @@ const AddCommentForm = ({ articleName, setArticleInfo }) => {
     const [commentText, setCommentText] = useState('');
 
     const addComment = async () => {
-        const result = await fetch(`/api/articles/${articleName}/add-comment`, {
-            method: 'post',
-            body: JSON.stringify({ username, text: commentText }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        const body = await result.json();
+        const result = await axios.post(
+            `/api/articles/${articleName}/add-comment`,
+            { username, text: commentText }
+        );
+        const body = await result.data;
         setArticleInfo(body);
         setUsername('');
         setCommentText('');

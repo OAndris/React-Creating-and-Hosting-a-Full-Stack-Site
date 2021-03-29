@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import articleContent from '../assets/article-content';
 import NotFoundPage from './NotFoundPage';
 import ArticlesList from '../components/ArticlesList/ArticlesList';
@@ -19,8 +20,8 @@ const ArticlePage = ({ match }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await fetch(`/api/articles/${name}`);
-            const body = await result.json();
+            const result = await axios.get(`/api/articles/${name}`);
+            const body = await result.data;
             if (body) {
                 setArticleInfo(body);
             } else {
