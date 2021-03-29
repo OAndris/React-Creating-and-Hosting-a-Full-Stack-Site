@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './AddCommentForm.scss';
 
 const AddCommentForm = ({ articleName, setArticleInfo }) => {
     const [username, setUsername] = useState('');
@@ -19,9 +20,9 @@ const AddCommentForm = ({ articleName, setArticleInfo }) => {
     };
 
     return (
-        <>
-            <h3>Add a Comment</h3>
-            <label>
+        <div className="add-comment-form">
+            <h3 className="title">Add a Comment</h3>
+            <label className="form-input">
                 Name:
                 <input
                     type="text"
@@ -29,7 +30,7 @@ const AddCommentForm = ({ articleName, setArticleInfo }) => {
                     onChange={(event) => setUsername(event.target.value)}
                 />
             </label>
-            <label>
+            <label className="form-input">
                 Comment:
                 <textarea
                     rows="4"
@@ -39,7 +40,7 @@ const AddCommentForm = ({ articleName, setArticleInfo }) => {
                 />
             </label>
             <button onClick={addComment}>Add Comment</button>
-        </>
+        </div>
     );
 };
 

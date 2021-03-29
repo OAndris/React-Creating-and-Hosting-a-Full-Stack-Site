@@ -1,4 +1,5 @@
 import React from 'react';
+import './UpvotesSection.scss';
 
 const UpvotesSection = ({ articleName, upvotes, setArticleInfo }) => {
     const upvoteArticle = async () => {
@@ -9,12 +10,10 @@ const UpvotesSection = ({ articleName, upvotes, setArticleInfo }) => {
         setArticleInfo(body);
     };
     return (
-        <>
+        <div className="upvotes-section">
             <button onClick={upvoteArticle}>Add Upvote</button>
-            <p
-                style={{ marginBottom: '1em' }}
-            >{`This post has been upvoted ${upvotes} times.`}</p>
-        </>
+            <p>{`This post has been upvoted ${upvotes} times.`}</p>
+        </div>
     );
 };
 
